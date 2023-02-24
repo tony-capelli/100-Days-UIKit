@@ -16,31 +16,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NgB-7F-9DF">
-                                <rect key="frame" x="84.666666666666686" y="237" width="224" height="114"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NgB-7F-9DF">
+                                <rect key="frame" x="84.666666666666686" y="251" width="224" height="114"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us" title=""/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bDP-iO-zNU"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLX-e4-fY6">
-                                <rect key="frame" x="84.666666666666686" y="374" width="224" height="114"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLX-e4-fY6">
+                                <rect key="frame" x="84.666666666666686" y="402" width="224" height="114"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="italy" title=""/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Td-dm-QS0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsq-S8-1Sd">
                                 <rect key="frame" x="84.666666666666686" y="103" width="224" height="114"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us" title=""/>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lvo-ft-xXB"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fsq-S8-1Sd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="5eM-EM-uOO"/>
-                            <constraint firstItem="DLX-e4-fY6" firstAttribute="centerX" secondItem="NgB-7F-9DF" secondAttribute="centerX" id="Lqg-a2-Isv"/>
-                            <constraint firstItem="DLX-e4-fY6" firstAttribute="top" secondItem="NgB-7F-9DF" secondAttribute="bottom" constant="23" id="XUa-uK-1e4"/>
-                            <constraint firstItem="NgB-7F-9DF" firstAttribute="centerX" secondItem="fsq-S8-1Sd" secondAttribute="centerX" id="cuN-Nr-vBF"/>
-                            <constraint firstItem="NgB-7F-9DF" firstAttribute="top" secondItem="fsq-S8-1Sd" secondAttribute="bottom" constant="20" id="ma1-hB-C73"/>
-                            <constraint firstItem="fsq-S8-1Sd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qdt-Fs-hJk"/>
+                            <constraint firstItem="fsq-S8-1Sd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="CEl-0n-U0A"/>
+                            <constraint firstItem="fsq-S8-1Sd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HNN-RO-hZ3"/>
+                            <constraint firstItem="NgB-7F-9DF" firstAttribute="centerX" secondItem="fsq-S8-1Sd" secondAttribute="centerX" id="QrR-MF-uaM"/>
+                            <constraint firstItem="DLX-e4-fY6" firstAttribute="top" secondItem="NgB-7F-9DF" secondAttribute="bottom" constant="37" id="TjN-hW-ndE"/>
+                            <constraint firstItem="NgB-7F-9DF" firstAttribute="top" secondItem="fsq-S8-1Sd" secondAttribute="bottom" constant="34" id="dhp-aK-g9i"/>
+                            <constraint firstItem="DLX-e4-fY6" firstAttribute="centerX" secondItem="NgB-7F-9DF" secondAttribute="centerX" id="juv-aK-KfU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9dC-b1-3vn"/>
