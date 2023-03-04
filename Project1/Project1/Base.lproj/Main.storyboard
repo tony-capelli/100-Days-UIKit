@@ -79,10 +79,10 @@
                         <viewLayoutGuide key="safeArea" id="642-vS-scN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="z18-Av-m16" firstAttribute="top" secondItem="Lhu-6S-ShB" secondAttribute="topMargin" constant="-72" id="LIh-sT-lZd"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="z18-Av-m16" secondAttribute="bottom" constant="-34" id="ReQ-qs-Xcq"/>
-                            <constraint firstItem="z18-Av-m16" firstAttribute="centerX" secondItem="Lhu-6S-ShB" secondAttribute="centerX" id="jR5-Tg-Sn6"/>
-                            <constraint firstItem="z18-Av-m16" firstAttribute="leading" secondItem="642-vS-scN" secondAttribute="leading" id="xij-KI-A4H"/>
+                            <constraint firstItem="z18-Av-m16" firstAttribute="top" secondItem="Lhu-6S-ShB" secondAttribute="topMargin" constant="-72" id="Rfi-JK-okE"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="z18-Av-m16" secondAttribute="bottom" constant="-34" id="akg-dL-7vO"/>
+                            <constraint firstItem="z18-Av-m16" firstAttribute="leading" secondItem="642-vS-scN" secondAttribute="leading" id="gom-x0-Z7E"/>
+                            <constraint firstItem="z18-Av-m16" firstAttribute="centerX" secondItem="Lhu-6S-ShB" secondAttribute="centerX" id="kxu-m6-Me3"/>
                         </constraints>
                     </view>
                     <connections>
