@@ -12,7 +12,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
     var progressView = UIProgressView()
-    var websites = ["apple.com", "hackingwithswift.com"]
+    var websites = ["google.com", "hackingwithswift.com"]
 
     override func loadView() {
         webView = WKWebView()
@@ -30,8 +30,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let progressButton = UIBarButtonItem(customView: progressView)
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: webView, action: #selector(webView.reload))
+        let backButton = UIBarButtonItem(title: "Back", style: .plain, target: webView, action: #selector(webView.goBack))
+        let forwardButton = UIBarButtonItem(title: "Forward", style: .plain, target: webView, action: #selector(webView.goForward))
         
-        toolbarItems = [progressButton, spacer, refresh]
+        toolbarItems = [progressButton, backButton, forwardButton, spacer, refresh]
         navigationController?.isToolbarHidden = false
         
         let url = URL(string: "https://www.hackingwithswift.com")!
@@ -73,9 +75,13 @@ class ViewController: UIViewController, WKNavigationDelegate {
             for website in websites {
                 if host.contains(website){
                     decisionHandler(.allow)
+                    return
                 }
             }
         }
+        let ac = UIAlertController(title: "Errore", message: "website not allowed", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(ac, animated: true)
         decisionHandler(.cancel)
     }
 }
