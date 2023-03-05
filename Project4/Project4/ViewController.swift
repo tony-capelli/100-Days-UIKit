@@ -12,8 +12,9 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
     var progressView = UIProgressView()
-    var websites = ["google.com", "hackingwithswift.com"]
-
+    var websites: [String]!
+    var selectedWebsite: Int!
+    
     override func loadView() {
         webView = WKWebView()
         webView.navigationDelegate = self
@@ -22,6 +23,12 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard websites != nil && selectedWebsite != nil else {
+            print("Websites and/or currentWebsite not set")
+            navigationController?.popViewController(animated: true)
+            return
+        }
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
         
@@ -36,7 +43,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         toolbarItems = [progressButton, backButton, forwardButton, spacer, refresh]
         navigationController?.isToolbarHidden = false
         
-        let url = URL(string: "https://www.hackingwithswift.com")!
+        let url = URL(string: "https://" + websites[selectedWebsite])!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
         
@@ -56,11 +63,12 @@ class ViewController: UIViewController, WKNavigationDelegate {
             ac.addAction(UIAlertAction(title: website, style: .default, handler: openPage))
         }
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
         present(ac, animated: true)
     }
-
+    
     func openPage(action: UIAlertAction){
-        let url = URL(string: "https://" + websites[0])!
+        let url = URL(string: "https://" + websites[selectedWebsite])!
         webView.load(URLRequest(url: url))
     }
     
