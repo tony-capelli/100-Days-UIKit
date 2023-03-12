@@ -41,8 +41,9 @@ class ViewController: UIViewController {
         answersLabel.textAlignment = .right
         view.addSubview(answersLabel)
         
-        cluesLabel.backgroundColor = .red
-        answersLabel.backgroundColor = .blue
+        
+        cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
+        answersLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         
         currentAnswer = UITextField()
         currentAnswer.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +67,6 @@ class ViewController: UIViewController {
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonsView)
         
-        buttonsView.backgroundColor = .green
         
         NSLayoutConstraint.activate([
             scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
@@ -113,9 +113,35 @@ class ViewController: UIViewController {
 
 
         ])
+        
+        // set some values for the width and height of each button
+        let width = 150
+        let height = 80
+
+        // create 20 buttons as a 4x5 grid
+        for row in 0..<4 {
+            for col in 0..<5 {
+                // create a new button and give it a big font size
+                let letterButton = UIButton(type: .system)
+                letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
+
+                // give the button some temporary text so we can see it on-screen
+                letterButton.setTitle("WWW", for: .normal)
+
+                // calculate the frame of this button using its column and row
+                let frame = CGRect(x: col * width, y: row * height, width: width, height: height)
+                letterButton.frame = frame
+
+                // add it to the buttons view
+                buttonsView.addSubview(letterButton)
+
+                // and also to our letterButtons array
+                letterButtons.append(letterButton)
+            }
+        }
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
