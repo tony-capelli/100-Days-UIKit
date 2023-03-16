@@ -78,7 +78,6 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         let ac = UIAlertController(title: "Rename person", message: nil, preferredStyle: .alert)
         ac.addTextField()
 
-        
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 
         ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak self, weak ac] _ in
