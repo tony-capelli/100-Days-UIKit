@@ -35,6 +35,7 @@ class GameScene: SKScene {
         ball.physicsBody?.restitution = 0.4
         ball.position = location
         addChild(ball)
+        
     }
     
     func makeBouncer(at position: CGPoint){
