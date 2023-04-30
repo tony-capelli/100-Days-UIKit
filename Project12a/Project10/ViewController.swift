@@ -18,8 +18,8 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         
         let defaults = UserDefaults.standard
         
-        if let people = defaults.object(forKey: "people") as? Data {
-            if let decodedPeople = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(people) as? [Person] {
+        if let savedPeople = defaults.object(forKey: "people") as? Data {
+            if let decodedPeople = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedPeople) as? [Person] {
                 people = decodedPeople
             }
         }
