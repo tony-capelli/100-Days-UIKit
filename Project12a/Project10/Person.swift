@@ -13,11 +13,10 @@ class Person: NSObject, NSCoding {
         coder.encode(image, forKey: "image")
     }
     
-    required init?(coder: NSCoder) {
-        name = coder.decodeObject(forKey: "name") as? String ?? ""
-        image = coder.decodeObject(forKey: "image") as? String ?? ""
+    required init?(coder aDecoder: NSCoder) {
+        name = aDecoder.decodeObject(forKey: "name") as? String ?? ""
+        image = aDecoder.decodeObject(forKey: "image") as? String ?? ""
     }
-    
 
     var name: String
     var image: String

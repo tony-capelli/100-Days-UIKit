@@ -16,11 +16,12 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
         
-        let defaults = UserDefaults.standard
-        
-        if let savedPeople = defaults.object(forKey: "people") as? Data {
-            if let decodedPeople = try? NSKeyedUnarchiver.unarchivedArrayOfObjects(ofClasses: [Person.self], from: savedPeople) as? [Person] {
-                people = decodedPeople
+        if let savedPeople = UserDefaults.standard.object(forKey: "people") as? Data{
+            
+            do {
+                people = try JSONDecoder().decode([Person].self, from: savedPeople)
+            } catch  {
+                print("failed to load people")
             }
         }
     }
@@ -100,9 +101,12 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     }
     
     func save() {
-        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: people, requiringSecureCoding: false){
-            let defaults = UserDefaults.standard
-            defaults.set(savedData, forKey: "people")
+        let jsonEncoder = JSONEncoder()
+        
+        if let savedDate = try? jsonEncoder.encode(people){
+            UserDefaults.standard.set(savedDate, forKey: "people")
+        } else {
+            print("failed to save people")
         }
     }
 }
