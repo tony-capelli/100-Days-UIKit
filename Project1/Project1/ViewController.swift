@@ -10,7 +10,8 @@ import UIKit
 class ViewController: UITableViewController {
     
     var pictures = [String]()
-
+    var pictDict = [String: Int]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,14 +24,15 @@ class ViewController: UITableViewController {
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
         
+
+        
         for item in items{
             if item.hasPrefix("nssl"){
                 pictures.append(item)
             }
+            pictDict[item] = 0
         }
-        
         pictures.sort()
-
     }
     
     override func tableView(_ tableview: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,7 +41,9 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
-        cell.textLabel?.text = pictures[indexPath.row]
+        let picture = pictures[indexPath.row]
+        cell.textLabel?.text = picture
+        cell.detailTextLabel?.text = "Viewed \(pictDict[picture]!) times."
         return cell
     }
     
@@ -47,6 +51,12 @@ class ViewController: UITableViewController {
         // 1: try loading the "Detail" view controller and typecasting it to be DetailViewController
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             // 2: success! Set its selectedImage property
+            
+            let picture = pictures[indexPath.row]
+            pictDict[picture]! += 1
+            save()
+            tableView.reloadData()
+            
             vc.selectedImage = pictures[indexPath.row]
             vc.totalPictures = pictures.count
             vc.selectedPictureNumber = indexPath.row + 1
@@ -60,6 +70,18 @@ class ViewController: UITableViewController {
         let vc = UIActivityViewController(activityItems: ["URL App"], applicationActivities: [])
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(vc, animated: true)
+    }
+    
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        if let savedData = try? jsonEncoder.encode(pictDict),
+            let savedPictures = try? jsonEncoder.encode(pictures) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "pictDict")
+            defaults.set(savedPictures, forKey: "pictures")
+        } else {
+            print("Failed to save data.")
+        }
     }
     
 }
