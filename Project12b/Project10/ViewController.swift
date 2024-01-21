@@ -17,7 +17,6 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
         
         if let savedPeople = UserDefaults.standard.object(forKey: "people") as? Data{
-            
             do {
                 people = try JSONDecoder().decode([Person].self, from: savedPeople)
             } catch  {
